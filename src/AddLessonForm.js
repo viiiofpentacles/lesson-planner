@@ -1,7 +1,4 @@
 function AddLessonForm (props) {
-    function populateDetails () { //function to populate details if draft is set to true
-    }
-
     function handleSubmit (e) {
         e.preventDefault();
         props.addToSubjectState();
