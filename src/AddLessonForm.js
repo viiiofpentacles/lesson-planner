@@ -9,7 +9,7 @@ function AddLessonForm (props) {
         <form onSubmit={handleSubmit}>
             <label>
                 Subject Name
-                <input className='subject-name-input' type='text' />
+                <input className='subject-name-input' type='text' required/>
             </label>
             <label>
                 <input className='draft-input' type='checkbox' />
@@ -17,11 +17,11 @@ function AddLessonForm (props) {
             </label>
             <label>
                 Date
-                <input className='date-input' type='date' />
+                <input className='date-input' type='date' required/>
             </label>
             <label>
                 Lesson content
-                <textarea className="content-input"/>
+                <textarea className="content-input" required/>
             </label>
             <button className='save-button'>Save</button>
         </form>
