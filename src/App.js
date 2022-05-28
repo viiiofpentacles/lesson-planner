@@ -3,6 +3,7 @@ import './styles/App.css';
 import SubjectCard from './SubjectCard';
 import AddLessonForm from './AddLessonForm';
 import DisplayLessonDetails from './DisplayLessonDetails';
+import { sortBySubjectName, sortByAscendingDate, sortByDescendingDate } from './sort';
 
 function App() {
   const [subjects, setSubjects] = useState([]);
@@ -17,7 +18,7 @@ function App() {
       draftValue = true;
     }
     return draftValue;
-    }
+  }
 
   function addToSubjectState () {
     const subjName = document.querySelector('.subject-name-input');
@@ -31,7 +32,25 @@ function App() {
     }));
   }
 
-  function updateDraft () { //const updatedSUbj, then setCurrent
+  function handleSortSubjects () {
+    const sortedSubjectsArray = sortBySubjectName(subjects);
+    setSubjects(sortedSubjectsArray);
+  }
+
+  function handleSortByDate () {
+    let dateText= document.querySelector('.date-sorter');
+    if (dateText.textContent === 'Date ▾') {
+      const sortedByDatesArray = sortByAscendingDate(subjects);
+      setSubjects(sortedByDatesArray);
+      dateText.textContent = 'Date ▴'
+    } else {
+      const sortedByDatesArray = sortByDescendingDate(subjects);
+      setSubjects(sortedByDatesArray);
+      dateText.textContent = 'Date ▾';
+    }
+  }
+
+  function updateDraft () { 
     const subjName = document.querySelector('.subject-name-input');
     const date = document.querySelector('.date-input');
     const content = document.querySelector('.content-input');
@@ -79,7 +98,10 @@ function App() {
       </header>
       <main className='container'>
         <div className='subject-box'>
-          <div className='subject-sorter'>Subject</div><div className='date-sorter'>Date</div>
+          <div className='sorter-box'>
+            <div className='subject-sorter' onClick={handleSortSubjects}>Subject</div>
+            <div className='date-sorter' onClick={handleSortByDate}>Date ▾</div>
+          </div>
           <div className='subject-list'>
             {displaySubjects}
             </div>
