@@ -10,16 +10,17 @@ function App() {
   const [current, setCurrent] = useState({});
   const [showDetails, setShowDetails] = useState(false);
 
+  function determineDraftValue () {
+    const draft = document.querySelector('.draft-input');
+    let draftValue = false;
+    if (draft.checked) {
+      draftValue = true;
+    }
+    return draftValue;
+    }
+
   function addToSubjectState () {
     const subjName = document.querySelector('.subject-name-input');
-    const draft = document.querySelector('.draft-input');
-    const determineDraftValue = () => {
-      let draftValue = false;
-      if (draft.checked) {
-        draftValue = true;
-      }
-      return draftValue;
-    }
     const date = document.querySelector('.date-input');
     const content = document.querySelector('.content-input');
     setSubjects(subjects.concat({
@@ -30,7 +31,19 @@ function App() {
     }));
   }
 
-  function updateDraft () { //used to update existing subject states that are drafts
+  function updateDraft () { //const updatedSUbj, then setCurrent
+    const subjName = document.querySelector('.subject-name-input');
+    const date = document.querySelector('.date-input');
+    const content = document.querySelector('.content-input');
+    const filteredArray = subjects.filter((subject) => subject !== current);
+    const updatedSubj = {
+      name: subjName.value,
+      draft: determineDraftValue(),
+      date: date.value,
+      content: content.value,
+    }
+    setSubjects(filteredArray.concat(updatedSubj));
+    chooseCurrentSelection(updatedSubj);
   }
 
   function toggleAddForm () {
@@ -77,7 +90,7 @@ function App() {
           <AddLessonForm addToSubjectState={addToSubjectState} />
           }
           {showDetails === true &&
-          <DisplayLessonDetails current={current} addToSubjectState={updateDraft} />
+          <DisplayLessonDetails current={current} updateDraft={updateDraft} />
           }
         </div>
       </main>
