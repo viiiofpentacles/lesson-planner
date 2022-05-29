@@ -1,0 +1,63 @@
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('./font/Roboto/Roboto-Medium.ttf') format('woff');
+}
+
+.App-header,
+.subject-box,
+.list-add-viewer {
+    background-color: rgb(250, 250, 250);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.subject-box,
+.list-add-viewer {
+    border-radius: 4px;
+    height: 80vh;
+}
+
+.App-header {
+    color: rgb(187, 125, 10);
+    display: flex;
+    position: absolute;
+    top: 0;
+    width: 98vw;
+    font-size: 0.8rem;
+    padding-left: 2vw;
+}
+
+.container {
+    margin-top: 6rem;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 2%;
+    align-items: center;
+    width: 96%;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+}
+
+.sorter-box {
+    font-family: 'Roboto-Medium';
+}
+
+.subject-card,
+.sorter-box {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(207, 207, 207);
+}
+
+.subject-card:hover,
+.sorter-box:hover {
+    cursor: pointer;
+}
+
+.subject-list {
+    height: 60vh;
+    overflow: scroll;
+}
