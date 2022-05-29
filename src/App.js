@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles/App.css';
 import SubjectCard from './SubjectCard';
 import AddLessonForm from './AddLessonForm';
@@ -10,6 +10,19 @@ function App() {
   const [showForm, setShowForm] = useState(false);
   const [current, setCurrent] = useState({});
   const [showDetails, setShowDetails] = useState(false);
+  
+  (function getSubjects () {
+    if (localStorage.length !== 0 && (subjects.length === 0)) {
+      const parseStorage = JSON.parse(localStorage.getItem('lessons'));
+      setSubjects(subjects.concat(parseStorage));
+    }
+  })();
+
+  useEffect(() => {
+    if (subjects.length !== 0) {
+      localStorage.setItem('lessons', JSON.stringify(subjects));
+    }
+  }, [subjects])
 
   function determineDraftValue () {
     const draft = document.querySelector('.draft-input');
