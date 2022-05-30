@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import AddLessonForm from './AddLessonForm';
+import { parse, format } from 'date-fns';
 
 function DisplayLessonDetails (props) {
     useEffect(() => {
@@ -15,13 +16,16 @@ function DisplayLessonDetails (props) {
         }
     })
 
+    const dateParse = parse(props.current.date, 'yyyy-MM-dd', new Date());
+    const formattedDate = format(dateParse, 'dd MMM yyyy');
+
     if (props.current.draft === false) {
         return (
             <div className='lesson-details-container'>
                 <div className='details-display'>Subject Name</div>
                 <div className='generated-details'>{props.current.name}</div>
                 <div className='details-display'>Date</div>
-                <div className='generated-details'>{props.current.date}</div>
+                <div className='generated-details'>{formattedDate}</div>
                 <div className='details-display'>Lesson content</div>
                 <div className='generated-details'>{props.current.content}</div>
             </div>

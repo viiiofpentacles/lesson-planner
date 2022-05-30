@@ -1,3 +1,5 @@
+import { parse, format } from 'date-fns';
+
 const SubjectCard = (props) => {
     function handleShowDetails (e) {
         if (document.querySelector('.current') !== null) {
@@ -16,10 +18,13 @@ const SubjectCard = (props) => {
           }
     }
 
+    const dateParse = parse(props.item.date, 'yyyy-MM-dd', new Date());
+    const formattedDate = format(dateParse, 'dd MMM yyyy');
+    
     return (
         <div key={props.index} className="subject-card" onClick={handleShowDetails} onKeyUp={handleShowDetailsOnEnter} tabIndex='0'>
         <span>{props.item.name}</span>
-        <span>{props.item.date}</span>
+        <span>{formattedDate}</span>
     </div>
     );
 }
