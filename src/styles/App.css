@@ -67,7 +67,7 @@
     display: grid;
     grid-template-columns: 4fr 1fr;
     padding: 1rem;
-    border-bottom: 1px solid var(--default-white);
+    border-bottom: 1px solid rgb(206, 206, 206);
 }
 
 .current {
