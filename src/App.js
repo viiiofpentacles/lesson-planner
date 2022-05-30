@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './styles/App.css';
+import './styles/form.css';
 import SubjectCard from './SubjectCard';
 import AddLessonForm from './AddLessonForm';
 import DisplayLessonDetails from './DisplayLessonDetails';
@@ -43,14 +44,33 @@ function App() {
       date: date.value,
       content: content.value,
     }));
+    chooseCurrentSelection({});
   }
 
   function handleSortSubjects () {
+    if (document.querySelector('.current') !== null) {
+      const prevSelection = document.querySelector('.current');
+      prevSelection.classList.remove('current');
+    }
     const sortedSubjectsArray = sortBySubjectName(subjects);
     setSubjects(sortedSubjectsArray);
+    chooseCurrentSelection({});
+    setShowDetails(false);
+  }
+
+  function handleEnterSort (e) {
+    if (e.key === 'Enter') {
+      handleSortSubjects();
+    }
   }
 
   function handleSortByDate () {
+    if (document.querySelector('.current') !== null) {
+      const prevSelection = document.querySelector('.current');
+      prevSelection.classList.remove('current');
+    }
+    chooseCurrentSelection({});
+    setShowDetails(false);
     let dateText= document.querySelector('.date-sorter');
     if (dateText.textContent === 'Date ▾') {
       const sortedByDatesArray = sortByAscendingDate(subjects);
@@ -60,6 +80,12 @@ function App() {
       const sortedByDatesArray = sortByDescendingDate(subjects);
       setSubjects(sortedByDatesArray);
       dateText.textContent = 'Date ▾';
+    }
+  }
+
+  function handleEnterSortDate (e) {
+    if (e.key === 'Enter') {
+      handleSortByDate();
     }
   }
 
@@ -79,6 +105,10 @@ function App() {
   }
 
   function toggleAddForm () {
+    if (document.querySelector('.current') !== null) {
+      const prevSelection = document.querySelector('.current');
+      prevSelection.classList.remove('current');
+    }
     if (showForm === false) {
       setShowForm(true);
       setShowDetails(false);
@@ -101,7 +131,7 @@ function App() {
   }
 
   const displaySubjects = subjects.map(((item, index) => {
-    return <SubjectCard item = {item} key={index} chooseCurrent={chooseCurrentSelection} toggleShow={toggleShowDetails} />
+    return <SubjectCard item={item} key={index} chooseCurrent={chooseCurrentSelection} toggleShow={toggleShowDetails} />
   }));
 
   return (
@@ -112,12 +142,15 @@ function App() {
       <main className='container'>
         <div className='subject-box'>
           <div className='sorter-box'>
-            <div className='subject-sorter' onClick={handleSortSubjects}>Subject</div>
-            <div className='date-sorter' onClick={handleSortByDate}>Date ▾</div>
+            <div className='subject-sorter' onClick={handleSortSubjects} onKeyUp={handleEnterSort} tabIndex='0'>Subject</div>
+            <div className='date-sorter' onClick={handleSortByDate} onKeyUp={handleEnterSortDate} tabIndex='0'>Date ▾</div>
           </div>
           <div className='subject-list'>
             {displaySubjects}
-            </div>
+            {subjects.length === 0 &&
+              <div className='no-plans-text'>There are no lesson plans yet.</div>
+            }
+          </div>
           <button className='add-subject-button' onClick={toggleAddForm}>Add</button>
         </div>
         <div className='list-add-viewer'>

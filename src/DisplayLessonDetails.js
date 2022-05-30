@@ -18,9 +18,12 @@ function DisplayLessonDetails (props) {
     if (props.current.draft === false) {
         return (
             <div className='lesson-details-container'>
-                <div>{props.current.name}</div>
-                <div>{props.current.date}</div>
-                <div>{props.current.content}</div>
+                <div className='details-display'>Subject Name</div>
+                <div className='generated-details'>{props.current.name}</div>
+                <div className='details-display'>Date</div>
+                <div className='generated-details'>{props.current.date}</div>
+                <div className='details-display'>Lesson content</div>
+                <div className='generated-details'>{props.current.content}</div>
             </div>
         )} else {
         return (

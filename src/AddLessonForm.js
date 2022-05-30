@@ -7,19 +7,21 @@ function AddLessonForm (props) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label>
-                Subject Name
-                <input className='subject-name-input' type='text' required/>
-            </label>
-            <label>
-                <input className='draft-input' type='checkbox' />
-                Draft
-            </label>
-            <label>
+            <div className='name-draft-input'>
+                <label className='name-label-box'>
+                    Subject Name
+                    <input className='subject-name-input' type='text' required/>
+                </label>
+                <label className='checkbox-label'>
+                    <input className='draft-input' type='checkbox' />
+                    Draft
+                </label>
+            </div>
+            <label className='date-label-box'>
                 Date
                 <input className='date-input' type='date' required/>
             </label>
-            <label>
+            <label className='content-label-box'>
                 Lesson content
                 <textarea className="content-input" required/>
             </label>

@@ -1,0 +1,82 @@
+/* styles for form and lesson plan details box */
+
+.list-add-viewer {
+    height: calc(80vh - 4rem);
+    padding: 2rem;
+}   
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    height: 1.3rem;
+}
+
+input,
+textarea {
+    margin-top: 0.5rem;
+}
+
+.name-draft-input {
+    display: flex;
+    flex-direction: row;
+}
+
+label {
+    padding-bottom: 1rem;
+}
+
+.name-label-box,
+.date-label-box,
+.content-label-box {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto-Medium';
+}
+
+.name-label-box {
+    width: 60%;
+}
+
+.checkbox-label {
+    padding-top: 1.3rem;
+    padding-left: 1rem;
+}
+
+.date-input {
+    width: 20%;
+}
+
+.content-input {
+    height: 13rem;
+}
+
+.save-button {
+    align-self: flex-end;
+    height: 2.3rem;
+    width: 8rem;
+    background-color: var(--default-accent);
+    color: var(--default-white);
+    border: none;
+    border-radius: 5px;
+    font-family: 'Roboto-Medium';
+    font-size: 1rem;
+}
+
+.save-button:hover {
+    cursor: pointer;
+    background-color: var(--default-white);
+    color: var(--default-accent);
+    border: 1px solid var(--default-accent);
+}
+
+.details-display {
+    font-family: 'Roboto-Medium';
+    padding-bottom: 0.3rem;
+}
+
+.generated-details {
+    padding-bottom: 2rem;
+}
