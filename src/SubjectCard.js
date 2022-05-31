@@ -14,8 +14,8 @@ const SubjectCard = (props) => {
 
     function handleShowDetailsOnEnter (e) {
         if (e.key === 'Enter') {
-            handleShowDetails();
-          }
+            handleShowDetails(e);
+        }
     }
 
     const dateParse = parse(props.item.date, 'yyyy-MM-dd', new Date());
