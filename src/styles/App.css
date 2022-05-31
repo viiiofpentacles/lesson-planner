@@ -20,7 +20,7 @@
 .subject-box,
 .list-add-viewer {
     border-radius: 4px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .App-header {
@@ -83,7 +83,7 @@
 
 .subject-list {
     height: 60vh;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .add-subject-button {
