@@ -44,7 +44,7 @@ function App() {
       date: date.value,
       content: content.value,
     }));
-    chooseCurrentSelection({});
+    setCurrent({});
   }
 
   function handleSortSubjects () {
@@ -54,7 +54,7 @@ function App() {
     }
     const sortedSubjectsArray = sortBySubjectName(subjects);
     setSubjects(sortedSubjectsArray);
-    chooseCurrentSelection({});
+    setCurrent({});
     setShowDetails(false);
   }
 
@@ -130,6 +130,16 @@ function App() {
     setShowDetails(true);
   }
 
+  function deleteSubject () {
+    if (subjects.length === 1 ) {
+      localStorage.clear();
+    };
+    const filteredArray = subjects.filter((subject) => subject !== current);
+    setSubjects(filteredArray);
+    setShowDetails(false);
+    setCurrent({});
+  }
+
   const displaySubjects = subjects.map(((item, index) => {
     return <SubjectCard item={item} key={index} chooseCurrent={chooseCurrentSelection} toggleShow={toggleShowDetails} />
   }));
@@ -158,7 +168,7 @@ function App() {
           <AddLessonForm addToSubjectState={addToSubjectState} />
           }
           {showDetails === true &&
-          <DisplayLessonDetails current={current} updateDraft={updateDraft} />
+          <DisplayLessonDetails current={current} updateDraft={updateDraft} deleteSubject = {deleteSubject} />
           }
         </div>
       </main>

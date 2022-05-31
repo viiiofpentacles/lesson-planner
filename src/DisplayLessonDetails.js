@@ -22,12 +22,15 @@ function DisplayLessonDetails (props) {
     if (props.current.draft === false) {
         return (
             <div className='lesson-details-container'>
-                <div className='details-display'>Subject Name</div>
-                <div className='generated-details'>{props.current.name}</div>
-                <div className='details-display'>Date</div>
-                <div className='generated-details'>{formattedDate}</div>
-                <div className='details-display'>Lesson content</div>
-                <div className='generated-details'>{props.current.content}</div>
+                <div className='generated-content-box'>
+                    <div className='details-display'>Subject Name</div>
+                    <div className='generated-details'>{props.current.name}</div>
+                    <div className='details-display'>Date</div>
+                    <div className='generated-details'>{formattedDate}</div>
+                    <div className='details-display'>Lesson content</div>
+                    <div className='generated-details'>{props.current.content}</div>
+                </div>
+                <button className='delete-button' onClick={props.deleteSubject}>Delete</button>
             </div>
         )} else {
         return (
