@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/lesson-planner/static/css/main.df7c6050.css",
+    "main.js": "/lesson-planner/static/js/main.3fa23043.js",
+    "static/media/Roboto-Medium.ttf": "/lesson-planner/static/media/Roboto-Medium.7c8d04cd831df3033c8a.ttf",
+    "static/media/Roboto-Light.ttf": "/lesson-planner/static/media/Roboto-Light.333da16a3f3cc391d087.ttf",
+    "index.html": "/lesson-planner/index.html",
+    "main.df7c6050.css.map": "/lesson-planner/static/css/main.df7c6050.css.map",
+    "main.3fa23043.js.map": "/lesson-planner/static/js/main.3fa23043.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df7c6050.css",
+    "static/js/main.3fa23043.js"
+  ]
+}
