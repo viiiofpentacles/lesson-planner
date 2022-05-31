@@ -131,6 +131,10 @@ function App() {
   }
 
   function deleteSubject () {
+    if (document.querySelector('.current') !== null) {
+      const prevSelection = document.querySelector('.current');
+      prevSelection.classList.remove('current');
+    }
     if (subjects.length === 1 ) {
       localStorage.clear();
     };
